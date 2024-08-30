@@ -1,5 +1,5 @@
 import { material, project } from '@alilc/lowcode-engine';
-import { filterPackages } from '@alilc/lowcode-plugin-inject'
+import { filterPackages } from '@alilc/lowcode-plugin-inject';
 import { Message, Dialog } from '@alifd/next';
 import { IPublicTypeProjectSchema, IPublicEnumTransformStage } from '@alilc/lowcode-types';
 import DefaultPageSchema from './defaultPageSchema.json';
@@ -12,8 +12,7 @@ const generateProjectSchema = (pageSchema: any, i18nSchema: any): IPublicTypePro
     version: '1.0.0',
     i18n: i18nSchema,
   };
-}
-
+};
 
 export const saveSchema = async (scenarioName: string = 'unknown') => {
   setProjectSchemaToLocalStorage(scenarioName);
@@ -30,11 +29,11 @@ export const resetSchema = async (scenarioName: string = 'unknown') => {
           resolve();
         },
         onCancel: () => {
-          reject()
+          reject();
         },
-      })
-    })
-  } catch(err) {
+      });
+    });
+  } catch (err) {
     return;
   }
   const defaultSchema = generateProjectSchema(DefaultPageSchema, DefaultI18nSchema);
@@ -45,7 +44,7 @@ export const resetSchema = async (scenarioName: string = 'unknown') => {
   setProjectSchemaToLocalStorage(scenarioName);
   await setPackagesToLocalStorage(scenarioName);
   Message.success('成功重置页面');
-}
+};
 
 const getLSName = (scenarioName: string, ns: string = 'projectSchema') => `${scenarioName}:${ns}`;
 
@@ -59,7 +58,7 @@ export const getProjectSchemaFromLocalStorage = (scenarioName: string) => {
     return JSON.parse(localValue);
   }
   return undefined;
-}
+};
 
 const setProjectSchemaToLocalStorage = (scenarioName: string) => {
   if (!scenarioName) {
@@ -68,9 +67,9 @@ const setProjectSchemaToLocalStorage = (scenarioName: string) => {
   }
   window.localStorage.setItem(
     getLSName(scenarioName),
-    JSON.stringify(project.exportSchema(IPublicEnumTransformStage.Save))
+    JSON.stringify(project.exportSchema(IPublicEnumTransformStage.Save)),
   );
-}
+};
 
 const setPackagesToLocalStorage = async (scenarioName: string) => {
   if (!scenarioName) {
@@ -78,11 +77,8 @@ const setPackagesToLocalStorage = async (scenarioName: string) => {
     return;
   }
   const packages = await filterPackages(material.getAssets().packages);
-  window.localStorage.setItem(
-    getLSName(scenarioName, 'packages'),
-    JSON.stringify(packages),
-  );
-}
+  window.localStorage.setItem(getLSName(scenarioName, 'packages'), JSON.stringify(packages));
+};
 
 export const getPackagesFromLocalStorage = (scenarioName: string) => {
   if (!scenarioName) {
@@ -90,9 +86,11 @@ export const getPackagesFromLocalStorage = (scenarioName: string) => {
     return;
   }
   return JSON.parse(window.localStorage.getItem(getLSName(scenarioName, 'packages')) || '{}');
-}
+};
 
-export const getProjectSchema = async (scenarioName: string = 'unknown') : Promise<IPublicTypeProjectSchema> => {
+export const getProjectSchema = async (
+  scenarioName: string = 'unknown',
+): Promise<IPublicTypeProjectSchema> => {
   const pageSchema = await getPageSchema(scenarioName);
   return generateProjectSchema(pageSchema, DefaultI18nSchema);
 };
@@ -109,10 +107,10 @@ export const getPageSchema = async (scenarioName: string = 'unknown') => {
 export const getPreviewLocale = (scenarioName: string) => {
   const key = getLSName(scenarioName, 'previewLocale');
   return window.localStorage.getItem(key) || 'zh-CN';
-}
+};
 
 export const setPreviewLocale = (scenarioName: string, locale: string) => {
   const key = getLSName(scenarioName, 'previewLocale');
   window.localStorage.setItem(key, locale || 'zh-CN');
   window.location.reload();
-}
+};

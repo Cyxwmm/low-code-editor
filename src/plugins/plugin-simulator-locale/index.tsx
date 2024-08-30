@@ -13,12 +13,12 @@ const LocaleSelect: React.FC<IProps> = (props): React.ReactElement => {
   const currentLocaleValue = currentLocale || 'zh-CN';
   return (
     <div className="lowcode-plugin-simulator-locale-select">
-        <Select
+      <Select
         id="select"
         onChange={onChange}
         defaultValue={currentLocaleValue}
         aria-label="切换画布区域 locale"
-        style={{marginRight: 8}}
+        style={{ marginRight: 8 }}
       >
         <Option value="zh-CN">中文</Option>
         <Option value="en-US">English</Option>
@@ -34,7 +34,7 @@ const SimulatorLocalePlugin = (ctx: IPublicModelPluginContext) => {
       const currentLocale = project.simulatorHost?.get('locale') || 'zh-CN';
       const onLocaleChange = (value: string): void => {
         project.simulatorHost.set('locale', value);
-      }
+      };
       skeleton.add({
         area: 'topArea',
         type: 'Widget',
@@ -46,8 +46,7 @@ const SimulatorLocalePlugin = (ctx: IPublicModelPluginContext) => {
       });
     },
   };
-}
-SimulatorLocalePlugin.pluginName = 'SimulatorLocalePlugin';
-SimulatorLocalePlugin.meta = {
 };
+SimulatorLocalePlugin.pluginName = 'SimulatorLocalePlugin';
+SimulatorLocalePlugin.meta = {};
 export default SimulatorLocalePlugin;

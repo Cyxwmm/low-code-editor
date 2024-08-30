@@ -40,8 +40,8 @@ const SamplePreview = () => {
     });
     const pageSchema = componentsTree[0];
 
-    const libraryMap = {};
-    const libraryAsset = [];
+    const libraryMap: any = {};
+    const libraryAsset: any = [];
     packages.forEach(({ package: _package, library, urls, renderUrls }) => {
       libraryMap[_package] = library;
       if (renderUrls) {

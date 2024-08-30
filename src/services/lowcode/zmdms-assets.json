@@ -1,0 +1,114 @@
+{
+  "packages": [
+    {
+      "title": "fusion组件库",
+      "package": "@alifd/next",
+      "version": "1.26.4",
+      "urls": [
+        "https://g.alicdn.com/code/lib/alifd__next/1.26.4/next.min.css",
+        "https://g.alicdn.com/code/lib/alifd__next/1.26.4/next-with-locales.min.js"
+      ],
+      "library": "Next"
+    },
+    {
+      "package": "dayjs",
+      "version": "1.11.7",
+      "library": "dayjs",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/dayjs.min.js"]
+    },
+    {
+      "package": "dayjs/plugin/quarterOfYear",
+      "version": "1.11.7",
+      "library": "quarterOfYear",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/quarterOfYear.js"]
+    },
+    {
+      "package": "dayjs/plugin/weekday",
+      "version": "1.11.7",
+      "library": "weekday",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/weekday.js"]
+    },
+    {
+      "package": "dayjs/plugin/localeData",
+      "version": "1.11.7",
+      "library": "localeData",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/localeData.js"]
+    },
+    {
+      "package": "dayjs/plugin/weekYear",
+      "version": "1.11.7",
+      "library": "weekYear",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/weekYear.js"]
+    },
+    {
+      "package": "dayjs/plugin/weekOfYear",
+      "version": "1.11.7",
+      "library": "weekOfYear",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/weekOfYear.js"]
+    },
+    {
+      "package": "dayjs/plugin/advancedFormat",
+      "version": "1.11.7",
+      "library": "advancedFormat",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/advancedFormat.js"]
+    },
+    {
+      "package": "dayjs/plugin/customParseFormat",
+      "version": "1.11.7",
+      "library": "customParseFormat",
+      "urls": ["http://127.0.0.1:8080/dayjs@1.11.7/plugin/customParseFormat.js"]
+    },
+    {
+      "title": "antd@4组件库",
+      "package": "antd",
+      "version": "4.24.16",
+      "library": "antd",
+      "urls": [
+        "http://127.0.0.1:8080/antd@4.24.16/antd.min.js",
+        "http://127.0.0.1:8080/antd@4.24.16/antd.min.css"
+      ]
+    },
+    {
+      "title": "基于antd二开的组件库",
+      "package": "zmdms-webui",
+      "version": "1.3.4",
+      "library": "ZTUI",
+      "urls": [
+        "http://127.0.0.1:8080/zmdms-webui@1.3.4/index.umd.js",
+        "http://127.0.0.1:8080/zmdms-webui@1.3.4/index.default.css"
+      ]
+    },
+    {
+      "title": "中拓低代码基础组件库",
+      "package": "@zmdms/lowcode-components",
+      "version": "0.0.1",
+      "library": "ZmdmsLowcodeComponents",
+      "urls": [
+        "http://127.0.0.1:8080/lowcode-components@0.0.1/view.js",
+        "http://127.0.0.1:8080/lowcode-components@0.0.1/view.css"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "exportName": "ZmdmsLowcodeComponentsMeta",
+      "npm": {
+        "package": "@zmdms/lowcode-components",
+        "version": "0.0.1"
+      },
+      "url": "http://127.0.0.1:8080/lowcode-components@0.0.1/meta.js",
+      "urls": {
+        "default": "http://127.0.0.1:8080/lowcode-components@0.0.1/meta.js"
+      },
+      "advancedUrls": {
+        "default": ["http://127.0.0.1:8080/lowcode-components@0.0.1/meta.js"]
+      }
+    }
+  ],
+  "sort": {
+    "groupList": ["原子组件", "精选组件"],
+    "categoryList": ["通用"]
+  },
+  "groupList": ["原子组件", "精选组件"],
+  "ignoreComponents": {}
+}

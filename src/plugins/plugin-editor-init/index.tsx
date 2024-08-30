@@ -1,11 +1,13 @@
 import { IPublicModelPluginContext } from '@alilc/lowcode-types';
 import { injectAssets } from '@alilc/lowcode-plugin-inject';
-import assets from '../../services/assets.json';
-import { getProjectSchema } from '../../services/mockService';
+
+import { getAssetsRequest, getProjectSchemaRequest } from '../../services/lowcode';
+
 const EditorInitPlugin = (ctx: IPublicModelPluginContext, options: any) => {
   return {
     async init() {
       const { material, project, config } = ctx;
+      // 初始化一些参数配置信息（暂时不知道用途，主要是传递一些参数给引擎插件使用：当前场景、场景相关的一些配置信息（物料等等））
       const scenarioName = options['scenarioName'];
       const scenarioDisplayName = options['displayName'] || scenarioName;
       const scenarioInfo = options['info'] || {};
@@ -14,16 +16,20 @@ const EditorInitPlugin = (ctx: IPublicModelPluginContext, options: any) => {
       config.set('scenarioDisplayName', scenarioDisplayName);
       config.set('scenarioInfo', scenarioInfo);
 
-      // 设置物料描述
+      // TODO: 从远端获取资产包协议，并设置物料描述
+      // 将来要换成服务端接口、或者服务端的地址
+      const assets = await getAssetsRequest();
 
+      // 设置物料描述
       await material.setAssets(await injectAssets(assets));
 
-      const schema = await getProjectSchema(scenarioName);
+      // 获取应用schema数据（应用描述）
+      const schema = await getProjectSchemaRequest(scenarioName);
       // 加载 schema
       project.importSchema(schema as any);
     },
   };
-}
+};
 EditorInitPlugin.pluginName = 'EditorInitPlugin';
 EditorInitPlugin.meta = {
   preferenceDeclaration: {
@@ -43,7 +49,7 @@ EditorInitPlugin.meta = {
         key: 'info',
         type: 'object',
         description: '用于扩展信息',
-      }
+      },
     ],
   },
 };

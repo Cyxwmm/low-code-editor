@@ -17,12 +17,14 @@ const ComponentPanelPlugin = (ctx: IPublicModelPluginContext) => {
           description: '组件库',
         },
       });
+      // 禁用防止加载时点击出错
       componentsPane?.disable?.();
+      // 应用准备就绪时
       project.onSimulatorRendererReady(() => {
         componentsPane?.enable?.();
-      })
+      });
     },
   };
-}
+};
 ComponentPanelPlugin.pluginName = 'ComponentPanelPlugin';
 export default ComponentPanelPlugin;

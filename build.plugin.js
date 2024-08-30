@@ -18,9 +18,7 @@ module.exports = ({ onGetWebpackConfig }) => {
       },
     });
 
-    config
-    .plugin('index')
-    .use(HtmlWebpackPlugin, [
+    config.plugin('index').use(HtmlWebpackPlugin, [
       {
         inject: false,
         minify: false,
@@ -31,17 +29,14 @@ module.exports = ({ onGetWebpackConfig }) => {
         filename: 'index.html',
       },
     ]);
-    config
-      .plugin('preview')
-      .use(HtmlWebpackPlugin, [
-        {
-          inject: false,
-          templateParameters: {
-          },
-          template: require.resolve('./public/preview.html'),
-          filename: 'preview.html',
-        },
-      ]);
+    config.plugin('preview').use(HtmlWebpackPlugin, [
+      {
+        inject: false,
+        templateParameters: {},
+        template: require.resolve('./public/preview.html'),
+        filename: 'preview.html',
+      },
+    ]);
 
     config.plugins.delete('hot');
     config.devServer.hot(false);
@@ -49,9 +44,8 @@ module.exports = ({ onGetWebpackConfig }) => {
     config.module // fixes https://github.com/graphql/graphql-js/issues/1272
       .rule('mjs$')
       .test(/\.mjs$/)
-      .include
-        .add(/node_modules/)
-        .end()
+      .include.add(/node_modules/)
+      .end()
       .type('javascript/auto');
   });
 };

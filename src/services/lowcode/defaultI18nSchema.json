@@ -1,0 +1,10 @@
+{
+  "zh-CN": {
+    "i18n-title": "你好 ",
+    "i18n-user": "{name} 博士"
+  },
+  "en-US": {
+    "i18n-title": "Hello ",
+    "i18n-user": "Doctor {name}"
+  }
+}
